@@ -15,3 +15,10 @@ class Product(models.Model):
     @staticmethod
     def get_all_products():
         return Product.objects.all()
+
+    @staticmethod
+    def get_all_products_by_categoryid(cate_id):
+        if cate_id:
+            return Product.objects.filter(cate_id=cate_id)
+        else:
+            return Product.get_all_products();
