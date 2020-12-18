@@ -22,3 +22,29 @@ class Home(View):
 
         print('you are : ', request.session.get('email'))
         return render(request, 'home.html', data)
+
+    def post(self, request):
+        product_id = request.POST.get('product')
+        remove = request.POST.get('remove')
+        cart = request.session.get('cart')
+        print(cart)
+        if cart:
+            quantity = cart.get(product_id)
+            if quantity:
+                if remove:
+                    if quantity <= 1:
+                        cart.pop(product_id)
+                    else:
+                        cart[product_id] = quantity - 1
+                else:
+                    cart[product_id] = quantity + 1
+
+            else:
+                cart[product_id] = 1
+        else:
+            cart={}
+            cart[product_id] = 1
+
+        request.session['cart'] = cart
+        print('cart', request.session['cart'])
+        return redirect('homepage')
