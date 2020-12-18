@@ -37,3 +37,11 @@ def total_cart_price(products, cart):
 @register.filter(name='currency')
 def currency(number):
     return str(number) +" đ"
+
+@register.filter(name='total_product')
+def total_product(cart):
+    total = 0
+    if cart:
+        for ids in cart.keys():
+            total += int(cart.get(ids))
+    return total

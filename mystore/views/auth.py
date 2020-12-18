@@ -19,7 +19,7 @@ class SignIn(View):
         if user:
             flag = check_password(password, user.password)
             if flag:
-                request.session['customer'] = user.id
+                request.session['user'] = user.id
 
                 if self.return_url:
                     return HttpResponseRedirect(self.return_url)
