@@ -45,5 +45,5 @@ def total_product(cart):
     return total
 
 @register.filter(name='multiply')
-def multiply(number , number1):
+def multiply(number, number1):
     return number * number1
