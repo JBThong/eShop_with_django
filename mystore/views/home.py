@@ -27,7 +27,6 @@ class Home(View):
         product_id = request.POST.get('product')
         remove = request.POST.get('remove')
         cart = request.session.get('cart')
-        print(cart)
         if cart:
             quantity = cart.get(product_id)
             if quantity:
