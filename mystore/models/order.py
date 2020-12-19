@@ -21,7 +21,7 @@ class Order(models.Model):
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_id')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_orderdetail_id')
-    quantity = models.IntegerField(default=1)
+    quantity = models.PositiveIntegerField(default=1)
     price = models.BigIntegerField()
 
     @staticmethod

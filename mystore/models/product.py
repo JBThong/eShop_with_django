@@ -6,11 +6,11 @@ class Product(models.Model):
     price = models.BigIntegerField(default=0)
     description = models.TextField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to='uploads/products/')
-    stock = models.IntegerField(default=0)
+    stock = models.PositiveIntegerField(default=0)
     cate_id = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categoryid')
 
     def __str__(self):
-        self.name
+        return self.name
 
     @staticmethod
     def get_products_by_id(ids):
