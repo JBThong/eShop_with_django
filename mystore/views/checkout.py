@@ -18,8 +18,8 @@ class CheckOut(View):
         order.save()
         for product in products:
             quantity = cart.get(str(product.id))
-            order_detail = OrderDetail(order_id=Order(id=order.id),
-                                       productid=Product(id=product.id),
+            order_detail = OrderDetail(order=Order(id=order.id),
+                                       product=Product(id=product.id),
                                        quantity=quantity,
                                        price=product.price)
             order_detail.save()

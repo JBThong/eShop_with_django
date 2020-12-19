@@ -7,6 +7,9 @@ class User(models.Model):
     last_name = models.CharField(max_length=50, default='', blank=True)
     phone = models.CharField(max_length=15)
 
+    def __str__(self):
+        return self.email
+
     def register(self):
         self.save()
 

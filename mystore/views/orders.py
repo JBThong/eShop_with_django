@@ -15,3 +15,8 @@ class OrderDetailV(View):
     def get(self, request, id):
         orders_detail = OrderDetail.get_order_detail_by_order(id)
         return render(request, 'order_detail.html', {'products': orders_detail})
+
+class CancelOrdel(View):
+    def get(self, request, id):
+        Order.cancel_order(id)
+        return redirect('orders')

@@ -12,7 +12,6 @@ class Cart(View):
         if carts:
             ids = list(carts.keys())
             products = Product.get_products_by_id(ids)
-        print(type(products))
         if products:
             is_has_product = True
         return render(request, 'cart.html', {'products': products, 'is_has_product': is_has_product})

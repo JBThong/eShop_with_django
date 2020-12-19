@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import Home, SignUp, SignIn, signout, Cart, CheckOut, Orders, OrderDetailV
+from .views import Home, SignUp, SignIn, signout, Cart, CheckOut, Orders, OrderDetailV, CancelOrdel
 from .middlewares import auth_middleware
 
 urlpatterns = [
@@ -13,4 +13,6 @@ urlpatterns = [
     # path('check-out', CheckOut.as_view(), name='checkout'),
     path('orders', auth_middleware(Orders.as_view()), name='orders'),
     path('orders/<int:id>', OrderDetailV.as_view(), name='order_detail'),
+    path('orders/cancel/<int:id>', CancelOrdel.as_view(), name='update_order'),
+
 ]

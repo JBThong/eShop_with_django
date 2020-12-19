@@ -7,8 +7,8 @@ class AdminProduct(admin.ModelAdmin):
 class AdminCate(admin.ModelAdmin):
     list_display = ['name']
 
-# class AdminOrder(admin.ModelAdmin):
-#     list_display = ['product', 'phone', 'quantity']
+class AdminOrder(admin.ModelAdmin):
+    list_display = ['user','address', 'phone', 'status']
 
 class AdminUser(admin.ModelAdmin):
     list_display = ['email', 'phone', 'password']
@@ -17,5 +17,5 @@ class AdminUser(admin.ModelAdmin):
 admin.site.register(Product, AdminProduct)
 admin.site.register(Category, AdminCate)
 admin.site.register(User, AdminUser)
-admin.site.register(Order)
+admin.site.register(Order, AdminOrder)
 admin.site.register(OrderDetail)
