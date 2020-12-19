@@ -36,13 +36,19 @@ class Home(View):
                     else:
                         cart[product_id] = quantity - 1
                 else:
-                    cart[product_id] = quantity + 1
+                    if Product.get_products_by_id(product_id).get().stock - cart[product_id] > 0:
+                        cart[product_id] = quantity + 1
+                    else:
+                        print('Product out of stock')
 
             else:
                 cart[product_id] = 1
         else:
             cart={}
-            cart[product_id] = 1
+            if Product.get_products_by_id(product_id).get().stock > 0:
+                cart[product_id] = 1
+            else:
+                print('Product out of stock')
 
         request.session['cart'] = cart
         print('cart', request.session['cart'])
