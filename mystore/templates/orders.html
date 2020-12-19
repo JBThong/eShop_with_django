@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load customtags %}
+<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Orders</p>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Username</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td><a href="{%url 'order_detail' order.id %}">{{order.id}}</a></td>
+                    <td>acc</td>
+                    <td>{{order.address}}</td>
+                    <td>{{order.phone}}</td>
+                    {% if order.status == 'canceled' %}-->
+                        <td><small class="badge badge-secondary">Canceled</small></td>
+                    {%elif order.status == 'fulfilled'%}
+                        <td><small class="badge badge-success">Fulfilled</small></td>
+                    {% else %}
+                        <td><small class="badge badge-primary">{{ order.status}}</small></td>
+                    {% endif %}
+                    <td>1000</td>
+                    <td>{{order.date}}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+   </div>
+</div>
+
+{% endblock %}

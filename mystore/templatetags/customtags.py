@@ -43,3 +43,7 @@ def total_product(cart):
         for ids in cart.keys():
             total += int(cart.get(ids))
     return total
+
+@register.filter(name='multiply')
+def multiply(number , number1):
+    return number * number1

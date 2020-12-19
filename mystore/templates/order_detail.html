@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load customtags %}
+<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Order detail</p>
+        <hr>
+                <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for product in products %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{product.product.image.url}}" alt=""></td>
+                    <td>{{product.product.name}}</td>
+                    <td>{{product.price|currency}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.quantity|multiply:product.price|currency}}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+   </div>
+</div>
+{% endblock %}
